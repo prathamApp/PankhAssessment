@@ -1,0 +1,209 @@
+<RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:id="@+id/splash_root"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:background="#FEFEFE"
+    tools:context="com.doedelhi.pankhpractice.ui.splash_activity.SplashActivity">
+
+    <ImageView
+        android:layout_width="match_parent"
+        android:layout_height="@dimen/_300sdp"
+        android:layout_alignParentBottom="true"
+        android:scaleType="centerCrop"
+        android:visibility="gone"
+         />
+
+    <com.hanks.htextview.typer.TyperTextView
+        android:id="@+id/tv_typer"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_centerHorizontal="true"
+        android:layout_marginTop="@dimen/_40sdp"
+        android:gravity="center"
+        android:lineSpacingMultiplier="1"
+        android:textColor="@color/black"
+        android:textSize="@dimen/_35sdp"
+        android:visibility="gone"
+        app:charIncrease="1"
+        app:typerSpeed="100" />
+
+    <RelativeLayout
+        android:id="@+id/rl_logo"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:visibility="gone"
+        android:layout_below="@+id/tv_typer">
+
+        <ImageView
+            android:id="@+id/doe_logo"
+            android:layout_width="@dimen/_130sdp"
+            android:layout_height="@dimen/_130sdp"
+            android:layout_centerHorizontal="true"
+            android:layout_marginTop="@dimen/_10sdp"
+            android:scaleType="centerCrop"
+            app:srcCompat="@drawable/doe_logo" />
+
+        <LinearLayout
+            android:layout_below="@+id/doe_logo"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_marginTop="@dimen/_10sdp"
+            android:layout_centerInParent="true"
+            android:orientation="vertical">
+            <com.doedelhi.pankhpractice.custom.customFont.SansTextView
+                android:id="@+id/tv_learn_at_your_pace"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_gravity="center"
+                android:textAlignment="center"
+                android:textSize="@dimen/_14sdp"
+                android:textColor="@color/black"
+                android:text=""/>
+            <com.doedelhi.pankhpractice.custom.customFont.SansTextView
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_gravity="center"
+                android:textAlignment="center"
+                android:layout_marginTop="@dimen/_35sdp"
+                android:textSize="@dimen/_13sdp"
+                android:textColor="@color/black"
+                android:text="@string/powered_by"/>
+            <ImageView
+                android:id="@+id/iv_pratham_logo"
+                android:layout_width="@dimen/_160sdp"
+                android:layout_height="@dimen/_40sdp"
+                android:scaleType="fitCenter"
+                android:layout_gravity="center_horizontal"
+                android:src="@drawable/pratham_logo_long_1" />
+
+        </LinearLayout>
+
+    </RelativeLayout>
+
+</RelativeLayout>
+
+<!--
+<?xml version="1.0" encoding="utf-8"?>
+<RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:id="@+id/splash_root"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:background="#FEFEFE"
+    tools:context="com.doedelhi.pankhpractice.ui.splash_activity.SplashActivity">
+
+    <ImageView
+        android:layout_width="match_parent"
+        android:layout_height="@dimen/_300sdp"
+        android:layout_alignParentBottom="true"
+        android:scaleType="centerCrop"
+        android:visibility="gone"
+         />
+
+    <com.hanks.htextview.typer.TyperTextView
+        android:id="@+id/tv_typer"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_centerHorizontal="true"
+        android:layout_marginTop="@dimen/_40sdp"
+        android:gravity="center"
+        android:lineSpacingMultiplier="1"
+        android:textColor="@color/colorBlack"
+        android:textSize="@dimen/_35sdp"
+        android:visibility="visible"
+        app:charIncrease="1"
+        app:typerSpeed="100" />
+
+    <RelativeLayout
+        android:id="@+id/rl_logo"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:visibility="gone"
+        android:layout_below="@+id/tv_typer">
+
+        <ImageView
+            android:id="@+id/doe_logo"
+            android:layout_width="@dimen/_130sdp"
+            android:layout_height="@dimen/_130sdp"
+            android:layout_centerHorizontal="true"
+            android:layout_marginTop="@dimen/_10sdp"
+            android:scaleType="centerCrop"
+            app:srcCompat="@drawable/doe_logo" />
+
+      &lt;!&ndash;  <LinearLayout
+            android:layout_below="@+id/doe_logo"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_marginTop="@dimen/_5sdp"
+            android:layout_centerInParent="true"
+            android:orientation="vertical">
+            <com.doedelhi.pankhpractice.custom.customFont.SansTextView
+                android:id="@+id/tv_learn_at_your_pace"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_gravity="center"
+                android:textAlignment="center"
+                android:textSize="@dimen/_14sdp"
+                android:textColor="@color/black"
+                android:fontFamily="@font/quicksand_medium"
+                />
+            <com.doedelhi.pankhpractice.custom.customFont.SansTextView
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_gravity="center"
+                android:textAlignment="center"
+                android:textSize="@dimen/_12sdp"
+                android:textColor="@color/black"
+                android:fontFamily="@font/quicksand_medium"
+                android:text="@string/powered_by"/>
+            <ImageView
+                android:id="@+id/iv_pratham_logo"
+                android:layout_width="@dimen/_160sdp"
+                android:layout_height="@dimen/_55sdp"
+                android:scaleType="fitCenter"
+                android:src="@drawable/pratham_logo_long" />
+
+        </LinearLayout>&ndash;&gt;
+        <LinearLayout
+            android:layout_below="@+id/doe_logo"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_marginTop="@dimen/_10sdp"
+            android:layout_centerInParent="true"
+            android:orientation="vertical">
+            <com.doedelhi.pankhpractice.custom.customFont.SansTextView
+                android:id="@+id/tv_learn_at_your_pace"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_gravity="center"
+                android:textAlignment="center"
+                android:textSize="@dimen/_14sdp"
+                android:textColor="@color/black"
+                android:text=""/>
+            <com.doedelhi.pankhpractice.custom.customFont.SansTextView
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_gravity="center"
+                android:textAlignment="center"
+                android:layout_marginTop="@dimen/_12sdp"
+                android:textSize="@dimen/_13sdp"
+                android:textColor="@color/black"
+                android:text="@string/powered_by"/>
+            <ImageView
+                android:id="@+id/iv_pratham_logo"
+                android:layout_width="@dimen/_160sdp"
+                android:layout_height="@dimen/_55sdp"
+                android:scaleType="fitCenter"
+                android:layout_gravity="center_horizontal"
+                android:src="@drawable/pratham_logo_long" />
+
+        </LinearLayout>
+    </RelativeLayout>
+
+</RelativeLayout>
+
+
+-->
