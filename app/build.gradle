@@ -135,8 +135,11 @@ dependencies {
     implementation 'com.hanks:htextview-base:0.1.6'
     implementation 'com.hanks:htextview-typer:0.1.6'
 
-    //fresco implementation
+    /*//fresco implementation
     implementation 'com.facebook.fresco:fresco:1.13.0'
+    implementation 'com.facebook.fresco:animated-gif:0.14.1'*/
+
+    implementation 'com.facebook.fresco:fresco:0.14.1'
     implementation 'com.facebook.fresco:animated-gif:0.14.1'
 }
 repositories {

@@ -48,9 +48,9 @@ public class ZoomImageDialog extends AppCompatActivity implements AudioPlayerInt
 
     @ViewById(R.id.btn_ok_img)
     ImageButton btn_ok;
-      @ViewById(R.id.iv_zoom_img)
-      ZoomageView zoomImg;
-//    @ViewById(R.id.thumbnail)
+    @ViewById(R.id.iv_zoom_img)
+    ZoomageView zoomImg;
+    //    @ViewById(R.id.thumbnail)
 //    SimpleDraweeView thumbnail;
     @ViewById(R.id.iv_img)
     GifViewZoom gifView;

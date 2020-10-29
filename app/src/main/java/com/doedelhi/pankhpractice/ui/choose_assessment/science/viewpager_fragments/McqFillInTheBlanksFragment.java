@@ -33,6 +33,8 @@ import com.doedelhi.pankhpractice.ui.choose_assessment.science.viewpager_fragmen
 import com.doedelhi.pankhpractice.utilities.Assessment_Constants;
 import com.doedelhi.pankhpractice.utilities.Assessment_Utility;
 import com.doedelhi.pankhpractice.utilities.AudioUtil;
+import com.doedelhi.pankhpractice.utilities.FrescoUtils;
+import com.facebook.drawee.view.SimpleDraweeView;
 
 import org.androidannotations.annotations.AfterViews;
 import org.androidannotations.annotations.Click;
@@ -55,7 +57,7 @@ public class McqFillInTheBlanksFragment extends Fragment implements AudioPlayerI
     @ViewById(R.id.tv_question)
     TextView question;
     @ViewById(R.id.iv_question_image)
-    ImageView questionImage;
+    SimpleDraweeView questionImage;
     @ViewById(R.id.iv_view_question_img)
     ImageView iv_view_question_img;
     @ViewById(R.id.rl_question_img)
@@ -118,17 +120,14 @@ public class McqFillInTheBlanksFragment extends Fragment implements AudioPlayerI
 //            pos = getArguments().getInt(POS, 0);
             scienceQuestion = (ScienceQuestion) getArguments().getSerializable(SCIENCE_QUESTION);
             assessmentAnswerListener = (ScienceAssessmentActivity) getActivity();
-
         }
     }
-
     @Override
     public View onCreateView(LayoutInflater inflater, ViewGroup container,
                              Bundle savedInstanceState) {
         // Inflate the layout for this fragment
         return inflater.inflate(R.layout.layout_mcq_fill_in_the_blanks_with_options_row, container, false);
     }
-
     @Override
     public void onViewCreated(@NonNull View view, @Nullable Bundle savedInstanceState) {
         super.onViewCreated(view, savedInstanceState);
@@ -157,6 +156,7 @@ public class McqFillInTheBlanksFragment extends Fragment implements AudioPlayerI
                     || questionExtension.equalsIgnoreCase("jpeg")) {
                 questionImage.setVisibility(View.VISIBLE);
                 rl_question_img.setVisibility(View.VISIBLE);
+                FrescoUtils.setImage(path,localPath,questionImage);
 //            if (AssessmentApplication.wiseF.isDeviceConnectedToMobileOrWifiNetwork()) {
 
 
@@ -165,7 +165,9 @@ public class McqFillInTheBlanksFragment extends Fragment implements AudioPlayerI
             if (imgPath.length > 0)
                 len = imgPath.length - 1;
             else len = 0;*/
-                if (questionExtension.equalsIgnoreCase("gif")) {
+
+
+               /* if (questionExtension.equalsIgnoreCase("gif")) {
                     try {
                         InputStream gif;
                         if (AssessmentApplication.wiseF.isDeviceConnectedToMobileOrWifiNetwork()) {
@@ -184,11 +186,11 @@ public class McqFillInTheBlanksFragment extends Fragment implements AudioPlayerI
                         e.printStackTrace();
                     }
 
-           /*     Glide.with(getActivity()).asGif()
+           *//*     Glide.with(getActivity()).asGif()
                         .load(path)
                         .apply(new RequestOptions()
                                 .placeholder(Drawable.createFromPath(localPath)))
-                        .into(questionImage);*/
+                        .into(questionImage);*//*
 //                    zoomImg.setVisibility(View.VISIBLE);
                 } else {
                     Glide.with(getActivity())
@@ -196,7 +198,7 @@ public class McqFillInTheBlanksFragment extends Fragment implements AudioPlayerI
                             .apply(new RequestOptions()
                                     .placeholder(Drawable.createFromPath(localPath)))
                             .into(questionImage);
-                }
+                }*/
                 iv_view_question_img.setOnClickListener(new View.OnClickListener() {
                     @Override
                     public void onClick(View v) {
@@ -333,7 +335,6 @@ public class McqFillInTheBlanksFragment extends Fragment implements AudioPlayerI
                         textView.setTextColor(Assessment_Utility.colorStateList);
                         textView.setId(r);
                         textView.setElevation(3);
-
                        *//* if (!options.get(r).getChoiceurl().equalsIgnoreCase("")) {
                             final String path = options.get(r).getChoiceurl();
                             radioButton.setOnClickListener(new View.OnClickListener() {
@@ -363,7 +364,6 @@ public class McqFillInTheBlanksFragment extends Fragment implements AudioPlayerI
                         }
 //                        radioGroupMcq.addView(textView);
                         gridMcq.addView(textView);
-
                         if (ans.equals(options.get(r).getChoicename())) {
 //                            textView.setChecked(true);
                         } else {
@@ -744,10 +744,8 @@ public class McqFillInTheBlanksFragment extends Fragment implements AudioPlayerI
                         para = AppDatabase.getDatabaseInstance(getActivity()).getScienceQuestionDao().getParabyRefId(scienceQuestion.getRefParaID());
                     }
                     assessmentAnswerListener.setParagraph(para, scienceQuestion.isParaQuestion());
-
                 } else {
                     assessmentAnswerListener.setParagraph(para, scienceQuestion.isParaQuestion());
-
 //                }
             }
         }
@@ -761,10 +759,8 @@ public class McqFillInTheBlanksFragment extends Fragment implements AudioPlayerI
                 para = AppDatabase.getDatabaseInstance(getActivity()).getScienceQuestionDao().getParabyRefId(scienceQuestion.getRefParaID());
             }
             assessmentAnswerListener.setParagraph(para, scienceQuestion.isParaQuestion());
-
         } else {
             assessmentAnswerListener.setParagraph(para, scienceQuestion.isParaQuestion());
-
         }
     }*/
 
@@ -814,4 +810,3 @@ public class McqFillInTheBlanksFragment extends Fragment implements AudioPlayerI
         }
     }
 }
-

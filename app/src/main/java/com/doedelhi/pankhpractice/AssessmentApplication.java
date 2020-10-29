@@ -11,6 +11,7 @@ import android.support.v4.content.ContextCompat;
 import android.support.v7.app.AppCompatDelegate;
 import android.util.Log;
 
+import com.facebook.drawee.backends.pipeline.Fresco;
 import com.isupatches.wisefy.WiseFy;
 import com.doedelhi.pankhpractice.custom.FastSave;
 import com.doedelhi.pankhpractice.custom.font.FontChanger;
@@ -74,7 +75,7 @@ public class AssessmentApplication extends Application {
             assessmentApplication = this;
         }
         FastSave.init(getApplicationContext());
-
+        Fresco.initialize(this);
         sharedPreferences = getSharedPreferences(PREFS_VERSION, Context.MODE_PRIVATE);
         assessPath = Assessment_Utility.getInternalPath(this);
 
