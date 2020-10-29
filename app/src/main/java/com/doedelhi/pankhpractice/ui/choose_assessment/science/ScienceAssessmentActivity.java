@@ -2552,9 +2552,9 @@ public class ScienceAssessmentActivity extends BaseActivity implements PictureCa
                     }*/
                     int totalKeywords = 0, correctKeywords = 0, perc = 0;
                     String[] splittedAns = new String[0];
-                    if (scienceQuestion.getAnswer() != null && !scienceQuestion.getAnswer().equalsIgnoreCase("")) {
+                   /* if (scienceQuestion.getAnswer() != null && !scienceQuestion.getAnswer().equalsIgnoreCase("")) {
                         splittedAns = scienceQuestion.getAnswer().split(",");
-                    } else if (scienceQuestion.getAnsdesc() != null && !scienceQuestion.getAnsdesc().equalsIgnoreCase("")) {
+                    } else*/ if (scienceQuestion.getAnsdesc() != null && !scienceQuestion.getAnsdesc().equalsIgnoreCase("")) {
                         splittedAns = scienceQuestion.getAnsdesc().split(",");
                     }
                     totalKeywords = splittedAns.length;

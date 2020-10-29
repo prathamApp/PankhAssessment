@@ -38,7 +38,7 @@ public class FIB_WithoutOption_Presenter implements FIB_WithoutOption_Contract.F
             else sttResultStr = sttResult.get(0);
         }
 
-        String[] splitQues = answer.replaceAll(STT_REGEX_3, "").split(" ");
+        /*String[] splitQues = answer.replaceAll(STT_REGEX_3, "").split(" ");
         String[] splitRes = sttResultStr.split(" ");
 
         for (String splitRe : splitRes)
@@ -57,7 +57,7 @@ public class FIB_WithoutOption_Presenter implements FIB_WithoutOption_Contract.F
         Log.d("Punctu", "onResults: " + perc);
         if (perc >= 75) {
             Arrays.fill(correctArr, true);
-        }
+        }*/
         fib_view.reInitCurrentItems();
         fib_view.appendText(sttResultStr);
     }
