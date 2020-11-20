@@ -13,7 +13,7 @@
  * See the License for the specific language governing permissions and
  * limitations under the License.
  */
-package com.doedelhi.pankhpractice.services.camera;
+package com.doedelhi.pankhpractice.services.video_monitoring_capture_video;
 
 import android.annotation.TargetApi;
 import android.hardware.Camera;

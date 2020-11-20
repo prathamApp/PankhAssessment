@@ -1,4 +1,4 @@
-package com.doedelhi.pankhpractice.services.image_capture;
+package com.doedelhi.pankhpractice.services.video_monitoring_capture_images;
 
 
 import java.util.TreeMap;

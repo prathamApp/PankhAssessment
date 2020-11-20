@@ -54,9 +54,6 @@ import com.androidnetworking.interfaces.JSONArrayRequestListener;
 import com.androidnetworking.interfaces.StringRequestListener;
 import com.doedelhi.pankhpractice.AssessmentApplication;
 import com.doedelhi.pankhpractice.BaseActivity;
-import com.doedelhi.pankhpractice.ui.choose_assessment.SupervisedAssessmentFragment;
-import com.google.gson.Gson;
-import com.google.gson.reflect.TypeToken;
 import com.doedelhi.pankhpractice.R;
 import com.doedelhi.pankhpractice.async.PushDataToServer;
 import com.doedelhi.pankhpractice.custom.FastSave;
@@ -86,12 +83,12 @@ import com.doedelhi.pankhpractice.domain.Student;
 import com.doedelhi.pankhpractice.domain.SupervisorData;
 import com.doedelhi.pankhpractice.domain.TempScienceQuestion;
 import com.doedelhi.pankhpractice.interfaces.DataPushListener;
-import com.doedelhi.pankhpractice.services.image_capture.APictureCapturingService;
-import com.doedelhi.pankhpractice.services.image_capture.PictureCapturingListener;
-import com.doedelhi.pankhpractice.services.image_capture.PictureCapturingServiceImpl;
+import com.doedelhi.pankhpractice.services.video_monitoring_capture_images.APictureCapturingClass;
+import com.doedelhi.pankhpractice.services.video_monitoring_capture_images.PictureCapturingListener;
+import com.doedelhi.pankhpractice.services.video_monitoring_capture_images.PictureCapturingClassImpl;
+import com.doedelhi.pankhpractice.ui.choose_assessment.SupervisedAssessmentFragment;
 import com.doedelhi.pankhpractice.ui.choose_assessment.SupervisedAssessmentFragment_;
 import com.doedelhi.pankhpractice.ui.choose_assessment.science.bottomFragment.BottomQuestionFragment;
-import com.doedelhi.pankhpractice.services.camera.VideoMonitoringService;
 import com.doedelhi.pankhpractice.ui.choose_assessment.science.custom_dialogs.AssessmentTimeUpDialog;
 import com.doedelhi.pankhpractice.ui.choose_assessment.science.interfaces.AssessmentAnswerListener;
 import com.doedelhi.pankhpractice.ui.choose_assessment.science.interfaces.QuestionTrackerListener;
@@ -100,6 +97,8 @@ import com.doedelhi.pankhpractice.utilities.APIs;
 import com.doedelhi.pankhpractice.utilities.Assessment_Constants;
 import com.doedelhi.pankhpractice.utilities.Assessment_Utility;
 import com.doedelhi.pankhpractice.utilities.FileUtils;
+import com.google.gson.Gson;
+import com.google.gson.reflect.TypeToken;
 import com.pratham.atm.custom.LockNavigation.PinActivity;
 import com.robinhood.ticker.TickerView;
 
@@ -262,7 +261,7 @@ public class ScienceAssessmentActivity extends BaseActivity implements PictureCa
             Manifest.permission.CAMERA,
     };
     private static final int MY_PERMISSIONS_REQUEST_ACCESS_CODE = 1;
-    private APictureCapturingService pictureService;
+    private APictureCapturingClass pictureService;
 
     @AfterViews
     public void init() {
@@ -378,7 +377,7 @@ public class ScienceAssessmentActivity extends BaseActivity implements PictureCa
 
 //        showSelectTopicDialog();
         if (Assessment_Constants.VIDEOMONITORING) {
-            pictureService = PictureCapturingServiceImpl.getInstance(this);
+            pictureService = PictureCapturingClassImpl.getInstance(this);
 
 //            frame_video_monitoring.setVisibility(View.VISIBLE);
 
@@ -1935,7 +1934,7 @@ public class ScienceAssessmentActivity extends BaseActivity implements PictureCa
                                 if (pictureService != null)
                                     pictureService.startCapturing(ScienceAssessmentActivity.this, imgFileName);
                                 else {
-                                    pictureService = PictureCapturingServiceImpl.getInstance(ScienceAssessmentActivity.this);
+                                    pictureService = PictureCapturingClassImpl.getInstance(ScienceAssessmentActivity.this);
                                     pictureService.startCapturing(ScienceAssessmentActivity.this, imgFileName);
 
                                 }
@@ -2554,7 +2553,8 @@ public class ScienceAssessmentActivity extends BaseActivity implements PictureCa
                     String[] splittedAns = new String[0];
                    /* if (scienceQuestion.getAnswer() != null && !scienceQuestion.getAnswer().equalsIgnoreCase("")) {
                         splittedAns = scienceQuestion.getAnswer().split(",");
-                    } else*/ if (scienceQuestion.getAnsdesc() != null && !scienceQuestion.getAnsdesc().equalsIgnoreCase("")) {
+                    } else*/
+                    if (scienceQuestion.getAnsdesc() != null && !scienceQuestion.getAnsdesc().equalsIgnoreCase("")) {
                         splittedAns = scienceQuestion.getAnsdesc().split(",");
                     }
                     totalKeywords = splittedAns.length;
@@ -2567,7 +2567,8 @@ public class ScienceAssessmentActivity extends BaseActivity implements PictureCa
                                 correctKeywords++;
                             }
                         }
-                    perc = (correctKeywords * 100) / totalKeywords;
+                    if (totalKeywords > 0)
+                        perc = (correctKeywords * 100) / totalKeywords;
                     if (perc >= 50) {
                         scienceQuestionList.get(queCnt).setIsCorrect(true);
                         scienceQuestionList.get(queCnt).
@@ -3054,7 +3055,7 @@ public class ScienceAssessmentActivity extends BaseActivity implements PictureCa
                 score.setStartDateTime(scienceQuestionList.get(i).getStartTime());
                 if (FastSave.getInstance().getBoolean(Assessment_Constants.SUPERVISED, false))
                     //            if (Assessment_Constants.ASSESSMENT_TYPE.equalsIgnoreCase("practice"))
-                    score.setLabel("supervised assessment" + examStatus);
+                    score.setLabel("supervised " + examStatus);
                 else score.setLabel(Assessment_Constants.PRACTICE + examStatus);
                 score.setEndDateTime(scienceQuestionList.get(i).getEndTime());
                 //            score.setStudentID(Assessment_Constants.currentStudentID);
@@ -3289,7 +3290,7 @@ public class ScienceAssessmentActivity extends BaseActivity implements PictureCa
     }
 
 
-    public void startCameraService() {
+   /* public void startCameraService() {
         if (serviceIntent != null)
             startService(serviceIntent);
         String fileName = assessmentSession + "_" + Assessment_Utility.getCurrentDateTime() + ".mp4";
@@ -3316,7 +3317,7 @@ public class ScienceAssessmentActivity extends BaseActivity implements PictureCa
             }
 
         }, 300);
-    }
+    }*/
 
     @Override
     public void onCaptureDone(String pictureUrl, byte[] pictureData) {

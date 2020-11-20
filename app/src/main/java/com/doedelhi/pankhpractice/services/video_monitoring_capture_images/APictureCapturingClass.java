@@ -1,4 +1,4 @@
-package com.doedelhi.pankhpractice.services.image_capture;
+package com.doedelhi.pankhpractice.services.video_monitoring_capture_images;
 
 import android.app.Activity;
 import android.content.Context;
@@ -12,7 +12,7 @@ import android.view.Surface;
  *
  * @author hzitoun (zitoun.hamed@gmail.com)
  */
-public abstract class APictureCapturingService {
+public abstract class APictureCapturingClass {
 
     private static final SparseIntArray ORIENTATIONS = new SparseIntArray();
 
@@ -32,7 +32,7 @@ public abstract class APictureCapturingService {
      *
      * @param activity the activity used to get display manager and the application context
      */
-    APictureCapturingService(final Activity activity) {
+    APictureCapturingClass(final Activity activity) {
         this.activity = activity;
         this.context = activity.getApplicationContext();
         this.manager = (CameraManager) context.getSystemService(Context.CAMERA_SERVICE);

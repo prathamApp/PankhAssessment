@@ -1,4 +1,4 @@
-package com.doedelhi.pankhpractice.services.camera;
+package com.doedelhi.pankhpractice.services.video_monitoring_capture_video;
 
 import android.Manifest;
 import android.app.Service;

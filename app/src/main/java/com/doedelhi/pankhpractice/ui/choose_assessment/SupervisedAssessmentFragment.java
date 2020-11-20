@@ -262,24 +262,26 @@ public class SupervisedAssessmentFragment extends Fragment {
                 e.printStackTrace();
             }
             assessmentAnswerListener.removeSupervisorFragment();
-            Objects.requireNonNull(getActivity()).getSupportFragmentManager().popBackStackImmediate();
+            if (getActivity() != null)
+                Objects.requireNonNull(getActivity()).getSupportFragmentManager().popBackStackImmediate();
         } else {
 
             assessmentAnswerListener.removeSupervisorFragment();
-            Objects.requireNonNull(getActivity()).getSupportFragmentManager().popBackStack();
+            if (getActivity() != null)
+                Objects.requireNonNull(getActivity()).getSupportFragmentManager().popBackStack();
 
         }
     }
 
 
-    public void createDirectoryAndSaveFile(Bitmap imageToSave, String fileName) {
+    /*public void createDirectoryAndSaveFile(Bitmap imageToSave, String fileName) {
         try {
 
-         /*   File direct = new File(Environment.getExternalStorageDirectory().toString() + "/.assessmentInternal");
+         *//*   File direct = new File(Environment.getExternalStorageDirectory().toString() + "/.assessmentInternal");
             if (!direct.exists()) direct.mkdir();
             direct = new File(Environment.getExternalStorageDirectory().toString() + "/.assessmentInternal/supervisorImages");
             if (!direct.exists()) direct.mkdir();
-*/
+*//*
             File direct = new File(AssessmentApplication.assessPath + Assessment_Constants.ASSESSMENT_FOLDER_PATH);
             if (!direct.exists()) direct.mkdir();
             direct = new File(AssessmentApplication.assessPath + Assessment_Constants.STORE_SUPERVISOR_IMAGE_PATH);
@@ -295,7 +297,7 @@ public class SupervisedAssessmentFragment extends Fragment {
             e.printStackTrace();
         }
 
-    }
+    }*/
 
     @Override
     public void onAttach(Context context) {

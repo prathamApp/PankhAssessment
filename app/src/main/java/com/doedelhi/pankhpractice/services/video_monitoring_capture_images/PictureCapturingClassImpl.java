@@ -1,4 +1,4 @@
-package com.doedelhi.pankhpractice.services.image_capture;
+package com.doedelhi.pankhpractice.services.video_monitoring_capture_images;
 
 
 import android.Manifest;
@@ -50,9 +50,9 @@ import java.util.UUID;
  */
 
 @TargetApi(Build.VERSION_CODES.LOLLIPOP) //NOTE: camera 2 api was added in API level 21
-public class PictureCapturingServiceImpl extends APictureCapturingService {
+public class PictureCapturingClassImpl extends APictureCapturingClass {
 
-    private static final String TAG = PictureCapturingServiceImpl.class.getSimpleName();
+    private static final String TAG = PictureCapturingClassImpl.class.getSimpleName();
 
     private CameraDevice cameraDevice;
     private ImageReader imageReader;
@@ -73,7 +73,7 @@ public class PictureCapturingServiceImpl extends APictureCapturingService {
     /***
      * private constructor, meant to force the use of {@link #getInstance}  method
      */
-    private PictureCapturingServiceImpl(final Activity activity) {
+    private PictureCapturingClassImpl(final Activity activity) {
         super(activity);
     }
 
@@ -81,8 +81,8 @@ public class PictureCapturingServiceImpl extends APictureCapturingService {
      * @param activity the activity used to get the app's context and the display manager
      * @return a new instance
      */
-    public static APictureCapturingService getInstance(final Activity activity) {
-        return new PictureCapturingServiceImpl(activity);
+    public static APictureCapturingClass getInstance(final Activity activity) {
+        return new PictureCapturingClassImpl(activity);
     }
 
     /**
